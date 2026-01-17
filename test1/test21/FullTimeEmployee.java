@@ -2,8 +2,11 @@ package test1.test21;
 
 public class FullTimeEmployee extends Employee implements Taxable {
     public double salary;
-    public FullTimeEmployee(String name, String id, double salary){
+    public FullTimeEmployee(String name, String id, double salary) throws InvalidSalaryException{
         super(name, id);
+        if(salary < 0){
+            throw new InvalidSalaryException("Error! Salary cannot be negative: \" + salary");
+        }
         this.salary = salary;
     }
 

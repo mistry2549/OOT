@@ -5,15 +5,18 @@ public class Main {
     public static void main(String[] args) {
         Company myCompany = new Company();
 
-        
-        FullTimeEmployee dev = new FullTimeEmployee("Steve", "F001", 50000);
-        
-        
-        Freelancer graphic = new Freelancer("Job", "L001", 500, 100);
+        try{
+            FullTimeEmployee dev = new FullTimeEmployee("Steve", "F001", 50000);
+            myCompany.addEmployee(dev);
+            System.out.println("Adding bad employee...");
+            FullTimeEmployee badGuy = new FullTimeEmployee("Hacker", "X99", -9999);
+            myCompany.addEmployee(badGuy);
 
-     
-        myCompany.addEmployee(dev);
-        myCompany.addEmployee(graphic);
+
+        }catch(InvalidSalaryException e){
+            System.err.println("Caught Exception: " + e.getMessage());
+
+        }
 
        
         myCompany.reportplaroll();
